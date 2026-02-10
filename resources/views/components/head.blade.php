@@ -10,3 +10,4 @@
 <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 <title>Download your manual: Free user guides for all brands and devices!</title>
+
