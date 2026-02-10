@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
 }
 
+
 p {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -572,6 +573,8 @@ pre code {
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
+     justify-content: center;
+
 }
 
 .no-gutters {
@@ -4561,7 +4564,7 @@ input[type=button].btn-block {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: #e9ecef;
+    background-color: #343a40;
     border-radius: 0.25rem;
 }
 
@@ -10012,8 +10015,9 @@ a.text-dark:hover, a.text-dark:focus {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: #e9ecef;
+    background-color: #343a40;
     border-radius: 0.25rem;
+
 }
 
 .breadcrumb > li {

@@ -7,15 +7,16 @@
 
 <x-navbar/>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-md-8">
             <x-header/>
 
             <ul class="breadcrumb">
-                <li><a href="/" title="{{ __('misc.home_alt') }}"
-                       alt="{{ __('misc.home_alt') }}">{{ __('misc.home') }}</a></li>
+                <li>
+                    <a href="/" title="{{ __('misc.home_alt') }}" alt="{{ __('misc.home_alt') }}">{{ __('misc.home') }}</a>
+                </li>
                 {{ $breadcrumb ?? '' }}
             </ul>
 
@@ -27,17 +28,21 @@
 
             <ul class="breadcrumb">
                 <li>
-					<a href="/" title="{{ __('misc.home_alt') }}" alt="{{ __('misc.home_alt') }}">{{ __('misc.home') }}</a>
-				</li>
+                    <a href="/" title="{{ __('misc.home_alt') }}" alt="{{ __('misc.home_alt') }}">{{ __('misc.home') }}</a>
+                    <a href="#">about us</a>
+                    <a href="#">contact</a>
+                    <a href="#">social media</a>
+                    <span style="margin-left:.5rem; color: white;">© {{ __('misc.copyright') }}</span>
+                </li>
                 {{ $breadcrumb ?? '' }}
             </ul>
 
-        </div>
+
 
         <div class="row">
             <x-footer/>
         </div>
-
+    </div>
     </div>
 
 
