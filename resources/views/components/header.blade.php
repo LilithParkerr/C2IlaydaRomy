@@ -5,5 +5,6 @@
             <h1>{{ __('misc.homepage_title') }}</h1>
         </a>
         {{ $introduction_text ?? '' }}
+        {{ $header ?? '' }}
     </div>
 </div>
