@@ -13,6 +13,9 @@ class ManualController extends Controller
         $brand = Brand::findOrFail($brand_id);
         $manual = Manual::findOrFail($manual_id);
 
+
+        $manual->increment('manualcounter');
+
         return view('pages/manual_view', [
             "manual" => $manual,
             "brand" => $brand,
