@@ -156,13 +156,30 @@ sup {
 }
 
 a {
-    color: white;
+    color: black;
     text-decoration: none;
     background-color: transparent;
 }
+li a{
+    background-color: #e8e7e7;
+    color: black;
+    padding: 0.3rem;
+    margin: 0.5rem  ;
+
+}
+a li{
+    background-color: #e8e7e7;
+    color: black;
+    padding: 0.3rem;
+    margin: 0.5rem  ;
+}
+
 a:hover {
     color: #1d68a7;
     text-decoration: underline;
+}
+button{
+    color: black;
 }
 
 a:not([href]):not([class]) {
@@ -1079,7 +1096,9 @@ pre code {
     .col-md-4 {
         flex: 0 0 33.3333333333%;
         max-width: 33.3333333333%;
-        background-color: #3490dc;
+        background-color: #89898a;
+
+
 
     }
 
