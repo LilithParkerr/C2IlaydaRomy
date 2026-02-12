@@ -156,7 +156,7 @@ sup {
 }
 
 a {
-    color: #3490dc;
+    color: white;
     text-decoration: none;
     background-color: transparent;
 }
@@ -357,7 +357,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: bolder;
     line-height: 1.2;
 }
 
@@ -556,6 +556,7 @@ pre code {
 @media (min-width: 768px) {
     .container-md, .container-sm, .container {
         max-width: 720px;
+
     }
 }
 @media (min-width: 992px) {
@@ -574,6 +575,7 @@ pre code {
     margin-right: -15px;
     margin-left: -15px;
      justify-content: center;
+
 
 }
 
@@ -1077,6 +1079,8 @@ pre code {
     .col-md-4 {
         flex: 0 0 33.3333333333%;
         max-width: 33.3333333333%;
+        background-color: #3490dc;
+
     }
 
     .col-md-5 {
@@ -9967,6 +9971,7 @@ a.text-dark:hover, a.text-dark:focus {
 
     .container {
         min-width: 992px !important;
+        background-color: #f8f9fa;
     }
 
     .navbar {
