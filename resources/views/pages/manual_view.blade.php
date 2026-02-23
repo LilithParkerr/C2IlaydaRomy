@@ -4,31 +4,25 @@
         <meta name="robots" content="index, nofollow">
     </x-slot:head>
 
-    <x-slot:breadcrumb>
-        <li>
-            <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/"
-               alt="Manuals for '{{ $brand->name }}'"
-               title="Manuals for '{{ $brand->name }}'">
-                {{ $brand->name }}
-            </a>
-        </li>
-        <li>
-            <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/"
-               alt="Manuals for '{{ $brand->name }} {{ $type->name }}'"
-               title="Manuals for '{{ $brand->name }} {{ $type->name }}'">
-                {{ $type->name }}
-            </a>
-        </li>
-        <li>
-            <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/"
-               alt="View manual for '{{ $brand->name }}'"
-               title="View manual for '{{ $brand->name }} {{ $type->name }}'">
-                View
-            </a>
-        </li>
-    </x-slot:breadcrumb>
+  <x-slot:breadcrumb>
+    <li>
+        <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/"
+           alt="Manuals for '{{ $brand->name }}'"
+           title="Manuals for '{{ $brand->name }}'">
+            {{ $brand->name }}
+        </a>
+    </li>
+    <li>
+        <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/"
+           alt="View manual for '{{ $brand->name }}'"
+           title="View manual for '{{ $brand->name }}'">
+            View
+        </a>
+    </li>
+</x-slot:breadcrumb>
 
-    <h1>{{ $brand->name }} - {{ $type->name }}</h1>
+<h1>{{ $brand->name }} - {{ $manual->name }}</h1>
+
 
     {{-- Teller toevoegen --}}
     <p><strong>Aantal bezoekers:</strong> {{ $manual->manualcounter }}</p>

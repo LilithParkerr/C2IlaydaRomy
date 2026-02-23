@@ -16,13 +16,14 @@
     <div class="container mb-5">
         <div class="row">
             <div class="col-md-12">
-                <h2>top 10 manuals</h2>
+                <h2>Top 10 Manuals</h2>
                 <div class="card">
                     <div class="card-body">
                         <ol>
                             @foreach($topManuals as $manual)
                                 <li>
-                                    <a href="/{{ $manual->brand_id }}/{{ $manual->brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/">
+                                    {{-- Gebruik nu automatisch de route 'manual.top' --}}
+                                    <a href="{{ $manual->top_url }}">
                                         {{ $manual->brand->name }}: {{ $manual->name }}
                                     </a>
                                 </li>
@@ -71,11 +72,11 @@
     </div>
 
     {{-- Brands lijst met anchor tags --}}
-    <?php
-    $size = count($brands);
-    $columns = 3;
-    $chunk_size = ceil($size / $columns);
-    ?>
+    @php
+        $size = count($brands);
+        $columns = 3;
+        $chunk_size = ceil($size / $columns);
+    @endphp
 
     <div class="container">
         <div class="row">
@@ -83,16 +84,15 @@
                 <div class="col-md-4">
                     <ul>
                         @foreach($chunk as $brand)
-                            <?php
-                            $current_first_letter = strtoupper(substr($brand->name, 0, 1));
-
-                            if (!isset($header_first_letter) || (isset($header_first_letter) && $current_first_letter != $header_first_letter)) {
-                                echo '</ul>
-                                    <h2 id="letter-' . $current_first_letter . '" style="scroll-margin-top: 150px;">' . $current_first_letter . '</h2>
-                                    <ul>';
-                            }
-                            $header_first_letter = $current_first_letter
-                            ?>
+                            @php
+                                $current_first_letter = strtoupper(substr($brand->name, 0, 1));
+                                if (!isset($header_first_letter) || $current_first_letter != $header_first_letter) {
+                                    echo '</ul>
+                                        <h2 id="letter-' . $current_first_letter . '" style="scroll-margin-top: 150px;">' . $current_first_letter . '</h2>
+                                        <ul>';
+                                }
+                                $header_first_letter = $current_first_letter;
+                            @endphp
 
                             <li>
                                 <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">{{ $brand->name }}</a>
@@ -100,9 +100,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <?php
-                unset($header_first_letter);
-                ?>
+                @php unset($header_first_letter); @endphp
             @endforeach
         </div>
     </div>

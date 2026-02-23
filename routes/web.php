@@ -24,7 +24,7 @@ Productcat:  /category/12/Computers/
 */
 
 use App\Models\Brand;
-use App\Models\Manual; // 👈 TOEGEVOEGD
+use App\Models\Manual;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
@@ -38,16 +38,13 @@ Route::get('/', function () {
 
     $brands = Brand::all()->sortBy('name');
 
-    // 👇 TOEGEVOEGD
     $topManuals = Manual::with('brand')
         ->orderBy('manualcounter', 'desc')
         ->take(10)
         ->get();
 
-    return view('pages.homepage', compact('brands', 'topManuals')); // 👈 aangepast
+    return view('pages.homepage', compact('brands', 'topManuals'));
 })->name('home');
-
-
 
 // Redirect routes
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
@@ -62,11 +59,17 @@ Route::get('/language/{language_slug}/', [LocaleController::class, 'changeLocale
 // List of manuals for a brand
 Route::get('/{brand_id}/{brand_slug}/', [BrandController::class, 'show']);
 
-// Detail page for a manual
+// Detail page for a manual (bestaande route)
 Route::get(
     '/{brand_id}/{brand_slug}/{type_id}/{type_slug}/{manual_id}/manual/',
     [ManualController::class, 'show']
 )->name('manual.show');
+
+// ✨ Nieuwe route voor top 10 manuals (zonder type_id/type_slug)
+Route::get(
+    '/{brand_id}/{brand_slug}/{manual_id}/',
+    [ManualController::class, 'showTopManual']
+)->name('manual.top');
 
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
