@@ -6,22 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Manual;
 
-class ManualController extends Controller
+class HomeController extends Controller
 {
-public function show($brand_id, $brand_slug, $type_id, $type_slug, $manual_id)
-{
-    $brand = Brand::findOrFail($brand_id);
-    $manual = Manual::findOrFail($manual_id);
+    public function home()
+    {
+        // Alle brands ophalen
+        $brands = Brand::orderBy('name')->get();
 
-    // Teller +1
-    $manual->increment('manualcounter');
-    $manual->save();
+        // Top 10 populaire handleidingen ophalen
+        $topManuals = Manual::with('brand')
+            ->orderBy('manualcounter', 'desc') // bijvoorbeeld op populariteit
+            ->take(10)
+            ->get();
 
-    return view('pages.manual_view', [
-        'manual' => $manual,
-        'brand' => $brand,
-    ]);
-}
-
-
+        // View renderen en variabelen meegeven
+        return view('pages.home', [
+            'brands' => $brands,
+            'topManuals' => $topManuals,
+        ]);
+    }
 }
