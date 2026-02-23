@@ -30,7 +30,7 @@
                 <li>
                     <a href="/" title="{{ __('misc.home_alt') }}" alt="{{ __('misc.home_alt') }}">{{ __('misc.home') }}</a>
                     <a href="#">about us</a>
-                    <a href="#">contact</a>
+                    <a href="{{ route('contact') }}">contact</a>
                     <a href="#">social media</a>
                     <span style="margin-left:.5rem; color: white;">© {{ __('misc.copyright') }}</span>
                 </li>

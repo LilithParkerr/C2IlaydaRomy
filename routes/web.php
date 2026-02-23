@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,8 @@ Route::get(
 
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
+
+Route::get('/contact', [FormController::class, 'showForm'])
+    ->name('contact');
+Route::post('/contact', [FormController::class, 'submitForm'])
+    ->name('contact.submit');
