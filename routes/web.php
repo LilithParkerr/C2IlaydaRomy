@@ -47,6 +47,8 @@ Route::get('/', function () {
     return view('pages.homepage', compact('brands', 'topManuals')); // 👈 aangepast
 })->name('home');
 
+
+
 // Redirect routes
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
