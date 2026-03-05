@@ -11,6 +11,7 @@ class ManualController extends Controller
     {
         $brands = Brand::orderBy('name')->get();
 
+
         $topManuals = Manual::with('brand')
             ->orderBy('manualcounter', 'desc')
             ->take(10)
@@ -27,6 +28,8 @@ class ManualController extends Controller
 
         return view('pages.manual_list', compact('brands', 'topManuals'));
     }
+
+
 
     public function showTop($brand_id, $brand_slug, $manual_id)
     {

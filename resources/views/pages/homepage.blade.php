@@ -16,13 +16,15 @@
     <div class="container mb-5">
         <div class="row">
             <div class="col-md-12">
+
+
                 <h2>Top 10 Manuals</h2>
                 <div class="card">
                     <div class="card-body">
                         <ol>
                             @foreach($topManuals as $manual)
                                 <li>
-                                    {{-- Gebruik nu automatisch de route 'manual.top' --}}
+
                                     <a href="{{ $manual->top_url }}">
                                         {{ $manual->brand->name }}: {{ $manual->name }}
                                     </a>
@@ -43,7 +45,7 @@
                     <p style="margin-bottom: 10px;"><strong>Ga naar letter:</strong></p>
                     <div style="font-size: 1.1em; line-height: 1.8;">
                         @php
-                            // Verzamel alle eerste letters van merken
+
                             $availableLetters = $brands->map(function($brand) {
                                 return strtoupper(substr($brand->name, 0, 1));
                             })->unique()->sort()->values();
@@ -104,7 +106,7 @@
         </div>
     </div>
 
-    {{-- Smooth scrolling CSS --}}
+
     <style>
         html {
             scroll-behavior: smooth;
