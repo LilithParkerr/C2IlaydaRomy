@@ -1,56 +1,42 @@
 <x-layouts.app>
 
-<h1>{{ $brand->name }}</h1>
+    <x-slot:head>
+        <meta name="robots" content="index, nofollow">
+    </x-slot:head>
 
-<p>{{ __('introduction_texts.type_list', ['brand' => $brand->name]) }}</p>
+    <x-slot:breadcrumb>
+        <li>
+            <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/"
+               alt="Manuals for '{{ $brand->name }}'"
+               title="Manuals for '{{ $brand->name }}'">
+               {{ $brand->name }}
+            </a>
+        </li>
+    </x-slot:breadcrumb>
 
+    <h1>{{ $brand->name }}</h1>
 
-@if(isset($topManuals) && $topManuals->count())
-    <h2>Top 5 populaire handleidingen</h2>
+    <p>{{ __('introduction_texts.type_list', ['brand' => $brand->name]) }}</p>
 
-    @foreach ($topManuals as $manual)
-        <bu<a href="{{ route('manual.show', [
-    'brand_id' => $brand->id,
-    'brand_slug' => $brand?->getNameUrlEncodedAttribute(),
-    'type_id' => $manual->type?->id,
-    'type_slug' => $manual->type?->getNameUrlEncodedAttribute(),
-    'manual_id' => $manual->id
-]) }}">
-    {{ $manual->name }}
-</a>
-        </button>
-        <br>
+    @foreach ($manuals as $manual)
+        @if ($manual->locally_available)
+            <button>
+                {{-- Gebruik nu automatisch de top_url route als deze beschikbaar is --}}
+                <a href="{{ $manual->top_url ?? url('/' . $brand->id . '/' . $brand->getNameUrlEncodedAttribute() . '/' . $manual->id) }}"
+                   alt="{{ $manual->name }}"
+                   title="{{ $manual->name }}">
+                    {{ $manual->name }}
+                </a>
+            </button>
+            ({{ $manual->filesize_human_readable }})
+        @else
+            <button class="manuals">
+                <a href="{{ $manual->url }}" target="_blank" alt="{{ $manual->name }}" title="{{ $manual->name }}">
+                    {{ $manual->name }}
+                </a>
+            </button>
+        @endif
+        <br />
     @endforeach
-
-    <hr>
-@endif
-
-
-<h2>Alle handleidingen</h2>
-
-@foreach ($manuals as $manual)
-    @if ($manual->locally_available)
-        <button>
-            <a href="{{ route('manual.show', [
-                'brand_id' => $brand->id,
-                'brand_slug' => $brand->getNameUrlEncodedAttribute(),
-                'type_id' => $manual->type->id,
-                'type_slug' => $manual->type->getNameUrlEncodedAttribute(),
-                'manual_id' => $manual->id
-            ]) }}"
-               title="{{ $manual->name }}">
-                {{ $manual->name }}
-            </a>
-        </button>
-        ({{ $manual->filesize_human_readable }})
-    @else
-        <button class="manuals">
-            <a href="{{ $manual->url }}" target="_blank" title="{{ $manual->name }}">
-                {{ $manual->name }}
-            </a>
-        </button>
-    @endif
-    <br />
-@endforeach
 
 </x-layouts.app>
