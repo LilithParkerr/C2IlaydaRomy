@@ -12,7 +12,7 @@
         </x-slot:title>
     </h1>
 
-    {{-- Top 10 Populaire Handleidingen --}}
+
     <div class="container mb-5">
         <div class="row">
             <div class="col-md-12">
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    {{-- Alfabetisch Menu --}}
+
     <div class="container mb-4">
         <div class="row">
             <div class="col-md-12">
@@ -71,7 +71,6 @@
         </div>
     </div>
 
-    {{-- Brands lijst met anchor tags --}}
     @php
         $size = count($brands);
         $columns = 3;

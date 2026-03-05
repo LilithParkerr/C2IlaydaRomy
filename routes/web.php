@@ -30,15 +30,13 @@ Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed'
 Route::get('/language/{language_slug}/', [LocaleController::class, 'changeLocale']);
 
 
-// Korte URL (top)
-// Korte top-URL
+
 Route::get(
     '/{brand_id}/{brand_slug}/{manual_id}',
     [ManualController::class, 'showTop']
 )->name('manual.top');
 
-// Lange URL met type
-// Lange URL met type (type_id and type_slug are now optional)
+
 Route::get(
     '/{brand_id}/{brand_slug}/{type_id?}/{type_slug?}/{manual_id}/manual/',
     [ManualController::class, 'show']

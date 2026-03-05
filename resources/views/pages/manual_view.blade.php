@@ -28,7 +28,7 @@
 
     <h1>{{ $brand->name }} - {{ $manual->name }}</h1>
 
-    {{-- Teller toevoegen --}}
+
     <p><strong>Aantal bezoekers:</strong> {{ $manual->fresh()->manualcounter }}</p>
 
     @if ($manual->locally_available)
