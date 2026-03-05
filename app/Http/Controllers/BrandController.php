@@ -12,18 +12,8 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($brand_id);
 
-<<<<<<< HEAD
-
-    $topManuals = Manual::where('brand_id', $brand->id)
-        ->orderBy('manualcounter', 'desc')
-        ->take(5)
-        ->get();
 
 
-    $manuals = Manual::where('brand_id', $brand->id)
-        ->orderBy('name')
-        ->get();
-=======
         // Alle manuals van deze brand ophalen
         $manuals = Manual::where('brand_id', $brand->id)
             ->orderBy('name')
@@ -38,7 +28,7 @@ class BrandController extends Controller
             ]);
             return $manual;
         });
->>>>>>> parent of 6a31ee1 (Laravel error oplgelost)
+
 
         return view('pages.manual_list', compact('brand', 'manuals'));
     }
