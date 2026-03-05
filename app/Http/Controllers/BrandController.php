@@ -9,27 +9,24 @@ use App\Models\Manual;
 class BrandController extends Controller
 {
     public function show($brand_id, $brand_slug)
-    {
-        $brand = Brand::findOrFail($brand_id);
+{
+    $brand = Brand::findOrFail($brand_id);
 
 
+         // Top 5 populairste manuals van dit merk
+    $topManuals = Manual::where('brand_id', $brand->id)
+        ->orderBy('manualcounter', 'desc')
+        ->take(5)
+        ->get();
 
-        // Alle manuals van deze brand ophalen
-        $manuals = Manual::where('brand_id', $brand->id)
-            ->orderBy('name')
-            ->get();
+      // Alle manuals van dit merk
+    $manuals = Manual::where('brand_id', $brand->id)
+        ->orderBy('name')
+        ->get();
 
-        // Voor top 10 of speciale links kun je hier ook top_url toevoegen
-        $manuals->map(function($manual) use ($brand) {
-            $manual->top_url = route('manual.top', [
-                'brand_id' => $brand->id,
-                'brand_slug' => $brand->getNameUrlEncodedAttribute(),
-                'manual_id' => $manual->id,
-            ]);
-            return $manual;
-        });
-
-
-        return view('pages.manual_list', compact('brand', 'manuals'));
-    }
+  foreach ($manuals as $manual) {
+            $manual->increment('manualcounter');
+        }
+    return view('pages.manual_list', compact('brand', 'manuals', 'topManuals'));
+}
 }
