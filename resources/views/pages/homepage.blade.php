@@ -96,7 +96,8 @@
                             @endphp
 
                             <li>
-                                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">{{ $brand->name }}</a>
+                                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/"
+                                    class="manual-btn brand-link">{{ $brand->name }}</a>
                             </li>
                         @endforeach
                     </ul>
