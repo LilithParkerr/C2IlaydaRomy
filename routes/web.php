@@ -28,7 +28,14 @@ Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::cl
 Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed']);
 Route::get('/language/{language_slug}/', [LocaleController::class, 'changeLocale']);
 
-
+Route::get(
+    '/manual/{manual_id}',
+    [ManualController::class, 'show']
+)->name('manual.show');
+Route::get(
+    '/{brand_id}/{brand_slug}/',
+    [BrandController::class, 'show']
+)->name('brand.show');
 
 Route::get(
     '/{brand_id}/{brand_slug}/{manual_id}',
@@ -36,14 +43,7 @@ Route::get(
 )->name('manual.top');
 
 
-Route::get(
-    '/{brand_id}/{brand_slug}/{type_id?}/{type_slug?}/{manual_id}/manual/',
-    [ManualController::class, 'show']
-)->name('manual.show');
-Route::get(
-    '/{brand_id}/{brand_slug}/',
-    [BrandController::class, 'show']
-)->name('brand.show');
+
 
 
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);

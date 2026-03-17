@@ -8,19 +8,21 @@
 @if(isset($topManuals) && $topManuals->count())
     <h2>Top 5 populaire handleidingen</h2>
 
-    @foreach ($topManuals as $manual)
-        <bu<a href="{{ route('manual.show', [
-    'brand_id' => $brand->id,
-    'brand_slug' => $brand?->getNameUrlEncodedAttribute(),
-    'type_id' => $manual->type?->id,
-    'type_slug' => $manual->type?->getNameUrlEncodedAttribute(),
-    'manual_id' => $manual->id
-]) }}">
-    {{ $manual->name }}
-</a>
-        </button>
-        <br>
-    @endforeach
+      @foreach ($topManuals as $manual)
+       <button>
+           <a href="{{ route('manual.show', [
+               'brand_id' => $brand->id,
+               'brand_slug' => $brand->getNameUrlEncodedAttribute(),
+               'type_id' => $manual->type?->id ?? null,
+               'type_slug' => $manual->type?->getNameUrlEncodedAttribute() ?? null,
+               'manual_id' => $manual->id
+           ]) }}">
+               {{ $manual->name }}
+           </a>
+       </button>
+       <br>
+   @endforeach
+
 
     <hr>
 @endif
@@ -45,7 +47,7 @@
         ({{ $manual->filesize_human_readable }})
     @else
         <button class="manuals">
-            <a href="{{ $manual->url }}" target="_blank" title="{{ $manual->name }}">
+            <a href="{{ route('manual.show', ['manual_id' => $manual->id]) }}" target="_blank" title="{{ $manual->name }}">
                 {{ $manual->name }}
             </a>
         </button>
