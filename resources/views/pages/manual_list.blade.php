@@ -45,20 +45,13 @@
         </a>
         <span class="filesize">({{ $manual->filesize_human_readable }})</span>
     @else
-<<<<<<< HEAD
+
         <button class="manuals">
             <a href="{{ route('manual.show', ['manual_id' => $manual->id]) }}" target="_blank" title="{{ $manual->name }}">
                 {{ $manual->name }}
             </a>
         </button>
-=======
-        <a href="{{ $manual->url }}"
-           class="manual-btn external"
-           target="_blank"
-           title="{{ $manual->name }}">
-            {{ $manual->name }}
-        </a>
->>>>>>> d781011ba1341df1300688fad9d0b2a825bc1b89
+
     @endif
     <br>
 @endforeach
