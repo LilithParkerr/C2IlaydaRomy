@@ -32,27 +32,35 @@
 
 @foreach ($manuals as $manual)
     @if ($manual->locally_available)
-        <button>
-            <a href="{{ route('manual.show', [
-                'brand_id' => $brand->id,
-                'brand_slug' => $brand->getNameUrlEncodedAttribute(),
-                'type_id' => $manual->type->id,
-                'type_slug' => $manual->type->getNameUrlEncodedAttribute(),
-                'manual_id' => $manual->id
-            ]) }}"
-               title="{{ $manual->name }}">
-                {{ $manual->name }}
-            </a>
-        </button>
-        ({{ $manual->filesize_human_readable }})
+        <a href="{{ route('manual.show', [
+            'brand_id'     => $brand->id,
+            'brand_slug'   => $brand->getNameUrlEncodedAttribute(),
+            'type_id'      => $manual->type->id,
+            'type_slug'    => $manual->type->getNameUrlEncodedAttribute(),
+            'manual_id'    => $manual->id,
+        ]) }}"
+           class="manual-btn"
+           title="{{ $manual->name }}">
+            {{ $manual->name }}
+        </a>
+        <span class="filesize">({{ $manual->filesize_human_readable }})</span>
     @else
+<<<<<<< HEAD
         <button class="manuals">
             <a href="{{ route('manual.show', ['manual_id' => $manual->id]) }}" target="_blank" title="{{ $manual->name }}">
                 {{ $manual->name }}
             </a>
         </button>
+=======
+        <a href="{{ $manual->url }}"
+           class="manual-btn external"
+           target="_blank"
+           title="{{ $manual->name }}">
+            {{ $manual->name }}
+        </a>
+>>>>>>> d781011ba1341df1300688fad9d0b2a825bc1b89
     @endif
-    <br />
+    <br>
 @endforeach
 
 </x-layouts.app>

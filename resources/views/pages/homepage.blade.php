@@ -18,7 +18,7 @@
             <div class="col-md-12">
 
 
-                <h2>Top 10 Manuals</h2>
+                <h2 class="TopTitle">Top 10 Manuals</h2>
                 <div class="card">
                     <div class="card-body">
                         <ol>
@@ -96,7 +96,8 @@
                             @endphp
 
                             <li>
-                                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">{{ $brand->name }}</a>
+                                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/"
+                                    class="manual-btn brand-link">{{ $brand->name }}</a>
                             </li>
                         @endforeach
                     </ul>
