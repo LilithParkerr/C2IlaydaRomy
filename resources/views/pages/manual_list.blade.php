@@ -4,7 +4,7 @@
     <p>{{ __('introduction_texts.type_list', ['brand' => $brand->name]) }}</p>
 
     @if(isset($topManuals) && $topManuals->count())
-        <p>Top 5 populair manuals:</p>
+        <p>Top 5 popular manuals:</p>
         @foreach ($topManuals as $manual)
             <a href="{{ route('manual.show', [
                     'brand_id' => $brand->id,
