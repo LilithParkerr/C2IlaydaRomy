@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="position: sticky; top: 20px; z-index: 100; padding: 10px 0; background: white;">
-                    <p style="margin-bottom: 10px;"><strong>Ga naar letter:</strong></p>
+                    <p style="margin-bottom: 10px;"><strong>Go to letter:</strong></p>
                     <div style="font-size: 1.1em; line-height: 1.8;">
                         @php
 

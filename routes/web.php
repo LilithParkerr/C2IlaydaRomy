@@ -13,6 +13,7 @@ use App\Http\Controllers\LocaleController;
 
 // Homepage
 Route::get('/', function () {
+       App::setLocale('en');
     $brands = Brand::all()->sortBy('name');
 
     $topManuals = Manual::with('brand')

@@ -29,7 +29,7 @@
     <h1>{{ $brand->name }} - {{ $manual->name }}</h1>
 
 
-    <p><strong>Aantal bezoekers:</strong> {{ $manual->fresh()->manualcounter }}</p>
+    <p><strong>number of visitors:</strong> {{ $manual->fresh()->manualcounter }}</p>
 
     @if ($manual->locally_available)
         <iframe src="{{ $manual->url }}"
